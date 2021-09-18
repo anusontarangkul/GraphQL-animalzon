@@ -25,6 +25,13 @@ const Mutation = {
         }
         animals.push(newAnimal)
         return newAnimal;
+    },
+    removeAnimal: (parent, { id }, { animals }) => {
+        let index = animals.findIndex((animals) => {
+            return animals.id === id
+        });
+        animals.splice(index, 2);
+        return true
     }
 }
 
