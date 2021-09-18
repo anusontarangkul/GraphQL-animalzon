@@ -1,18 +1,26 @@
+
 const { ApolloServer } = require('apollo-server');
-const { animals, mainCards, categories } = require('./db.js')
-const typeDefs = require('./schema');
-const Query = require("./resolvers/Query");
-const Animal = require("./resolvers/Animal");
-const Category = require("./resolvers/Category");
-
-
+const { mainCards, animals, categories } = require('./db')
+const typeDefs = require('./schema')
+const Query = require("./resolvers/Query")
+const Animal = require("./resolvers/Animal")
+const Category = require("./resolvers/Category")
 
 const server = new ApolloServer({
-    typeDefs, resolvers: {
-        Query, Animal, Category
+    typeDefs,
+    resolvers: {
+        Query,
+        Animal,
+        Category
+    },
+    context: {
+        mainCards,
+        animals,
+        categories
     }
 });
 
+// The `listen` method launches a web server.
 server.listen().then(({ url }) => {
-    console.log(`Server ready at ${url}`)
-})
+    console.log(`🚀  Server ready at ${url}`);
+});
