@@ -29,6 +29,7 @@ function LandingPage() {
             <MainHero />
             <CategoryDisplay />
             <CardDisplay animals={data.animals} />
+
         </div>
     )
 }
